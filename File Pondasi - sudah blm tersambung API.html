@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Sinyal Trading dengan Chart Real-Time</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+      background-color: #f9f9f9;
+      color: #333;
+    }
+    h1 {
+      color: #004080;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+    }
+    th, td {
+      border: 1px solid #ddd;
+      padding: 8px;
+      text-align: center;
+    }
+    th {
+      background-color: #007bff;
+      color: white;
+    }
+    tr:hover {
+      background-color: #f1f1f1;
+    }
+    #chart-container {
+      margin-top: 40px;
+      height: 500px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Daftar Sinyal Trading</h1>
+  <table>
+    <tr>
+      <th>Instrumen</th>
+      <th>Harga</th>
+    </tr>
+    <tr>
+      <td>EURUSD</td>
+      <td id="price-eurusd">-</td>
+    </tr>
+    <tr>
+      <td>GBPUSD</td>
+      <td id="price-gbpusd">-</td>
+    </tr>
+    <tr>
+      <td>USDJPY</td>
+      <td id="price-usdjpy">-</td>
+    </tr>
+    <tr>
+      <td>AUDUSD</td>
+      <td id="price-audusd">-</td>
+    </tr>
+  </table>
+
+  <div id="chart-container">
+    <!-- TradingView Widget BEGIN -->
+    <div class="tradingview-widget-container">
+      <div id="tradingview_12345"></div>
+      <script type="text/javascript" src="https://s3.tradingview.com/tv.js"></script>
+      <script type="text/javascript">
+        new TradingView.widget({
+          "width": "100%",
+          "height": 500,
+          "symbol": "EURUSD",
+          "interval": "60",
+          "timezone": "Etc/UTC",
+          "theme": "light",
+          "style": "1",
+          "locale": "en",
+          "toolbar_bg": "#f1f3f6",
+          "enable_publishing": false,
+          "withdateranges": true,
+          "hide_side_toolbar": false,
+          "allow_symbol_change": true,
+          "studies": [
+            "Moving Average Exponential@tv-basicstudies",
+            "Moving Average Exponential@tv-basicstudies"
+          ],
+          "studies_overrides": {
+            "Moving Average Exponential@tv-basicstudies.0.length": 9,
+            "Moving Average Exponential@tv-basicstudies.0.color": "#DE2177",
+            "Moving Average Exponential@tv-basicstudies.1.length": 50,
+            "Moving Average Exponential@tv-basicstudies.1.color": "#DE4A21"
+          },
+          "container_id": "tradingview_12345"
+        });
+      </script>
+    </div>
+    <!-- TradingView Widget END -->
+  </div>
+</body>
+</html>
